@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import RootPage from './RootPage.js';
+import RootPage from './widgets/RootPage';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<RootPage />, document.getElementById('root'));
