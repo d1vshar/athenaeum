@@ -21,7 +21,6 @@ class RootPage extends React.Component {
   }
 
   componentDidMount() {
-    var data = [];
     axios.get("http://localhost:9000/api/books").then(resp => {
       this.setState({
         isLoaded: true,
