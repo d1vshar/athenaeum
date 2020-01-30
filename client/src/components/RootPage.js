@@ -49,11 +49,7 @@ class RootPage extends React.Component {
               {data.map(function(book) {
                 return (
                   <Grid item md={4}>
-                    <BookCard
-                      name={book.name}
-                      authors={book.authors}
-                      imgUrl={book.imgUrl}
-                    />
+                    <BookCard book={book}/>
                   </Grid>
                 );
               })}
