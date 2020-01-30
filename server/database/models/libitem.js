@@ -10,6 +10,7 @@ var LibraryItemSchema = new mongoose.Schema({
     publisher: { type: String, required: true },
     edition: { type: String },
     description: { type: String },
+    imgUrl: { type: String, default:'https://via.placeholder.com/116x180?text=No%20Book%20Cover'},
     subject: { type: String, default: 'Unknown' },
     amount: { type: Number, default: 0 },
     location: { type: String, defaultS: '' }
