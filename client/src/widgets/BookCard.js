@@ -16,8 +16,7 @@ const classes = {
     flexDirection: "column"
   },
   content: {
-    flex: "1 0 auto",
-    marginLeft: "auto"
+    flex: "1 0 auto"
   },
   cover: {
     marginLeft: "auto",
@@ -41,7 +40,6 @@ class BookCard extends React.Component {
           </CardContent>
           <CardActions>
             <Button>Details</Button>
-            <Button>Google Books</Button>
           </CardActions>
         </div>
         <CardMedia
