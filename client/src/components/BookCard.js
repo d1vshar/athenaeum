@@ -122,14 +122,14 @@ class BookCard extends React.Component {
                   <TableCell>{this.props.book.type}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>ISBN10, ISBN13</TableCell>
+                  <TableCell>ISBN10</TableCell>
                   <TableCell>
                     {this.props.book.isbn10 + ", " + this.props.book.isbn13}
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Subject</TableCell>
-                  <TableCell>{this.props.book.subject}</TableCell>
+                  <TableCell>Votes</TableCell>
+                  <TableCell>{this.props.book.votes}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>

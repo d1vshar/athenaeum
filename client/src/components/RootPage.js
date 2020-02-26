@@ -21,7 +21,7 @@ class RootPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:9000/api/books").then(resp => {
+    axios.get("http://localhost:9000/api/voting").then(resp => {
       this.setState({
         isLoaded: true,
         data: resp.data
@@ -48,7 +48,7 @@ class RootPage extends React.Component {
             <Grid container spacing={1}>
               {data.map(function(book) {
                 return (
-                  <Grid item md={4}>
+                  <Grid item key={book.name} md={4}>
                     <BookCard book={book}/>
                   </Grid>
                 );
