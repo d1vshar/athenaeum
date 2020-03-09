@@ -20,7 +20,7 @@ const classes = {
   card: {
     margin: "10px",
     display: "flex",
-    height: "150px"
+    height: "150px",
   },
   details: {
     display: "flex",
@@ -108,6 +108,9 @@ class BookCard extends React.Component {
                 <TableRow>
                   <TableCell>Author</TableCell>
                   <TableCell>{this.props.book.authors.join(", ")}</TableCell>
+                  <TableCell align="center" rowSpan={6}>
+                    <img src={this.props.book.imgUrl}></img>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Publisher</TableCell>

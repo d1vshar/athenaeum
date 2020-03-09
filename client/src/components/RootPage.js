@@ -48,7 +48,7 @@ class RootPage extends React.Component {
             <Grid container spacing={1}>
               {data.map(function(book) {
                 return (
-                  <Grid item key={book.name} md={4}>
+                  <Grid item key={book.name} md={4} xs={12}>
                     <BookCard book={book}/>
                   </Grid>
                 );
