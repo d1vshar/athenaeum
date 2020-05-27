@@ -21,7 +21,7 @@ class RootPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:9000/api/voting").then(resp => {
+    axios.get("/api/voting/").then(resp => {
       this.setState({
         isLoaded: true,
         data: resp.data

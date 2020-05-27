@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/api/voting', votingRouter);
 
-console.log('Listening on port ' + process.env.PORT);
+app.listen(process.env.SERVERPORT);
+console.log('Server is listening on port ' + process.env.SERVERPORT);
 
 module.exports = app;

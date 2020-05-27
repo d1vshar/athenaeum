@@ -75,7 +75,7 @@ export default function NewBookModal() {
   };
 
   const searchBook = evt => {
-    axios.get("http://localhost:9000/api/voting/search/" + isbn).then(resp => {
+    axios.get("/api/voting/search/" + isbn).then(resp => {
       if (resp.data.totalItems === 1) {
         console.log(resp.data);
         let result = resp.data.items[0];
