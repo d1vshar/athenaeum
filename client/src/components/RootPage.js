@@ -37,6 +37,7 @@ class RootPage extends React.Component {
       <div className={classes.root}>
         <DefaultAppBar />
         <Container fixed></Container>
+        
       </div>
       );
     } else {

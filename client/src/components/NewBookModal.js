@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import TextField from "@material-ui/core/TextField";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
@@ -13,6 +11,7 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 import Grid from "@material-ui/core/Grid";
 import {
   DialogContent,
+  DialogTitle,
   Table,
   TableBody,
   TableCell,
@@ -44,6 +43,12 @@ const useStyles = makeStyles(theme => ({
   },
   bookPicture: {
     margin: "auto"
+  },
+  closeButton: {
+    position: "absolute",
+    right: "5px",
+    top: "5px",
+    color: "grey"
   }
 }));
 
@@ -80,177 +85,105 @@ export default function NewBookModal() {
     });
   };
 
-  if (loaded == true) {
-    return (
-      <div>
-        <Button
-          variant="contained"
-          color="secondary"
-          startIcon={<AddBoxIcon></AddBoxIcon>}
-          onClick={handleClickOpen}
-        >
-          New Request
-        </Button>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          TransitionComponent={Transition}
-          maxWidth="md"
-        >
-          <AppBar className={classes.appBar}>
-            <Toolbar>
-              <IconButton
-                edge="start"
-                color="inherit"
-                onClick={handleClose}
-                aria-label="close"
-              >
-                <CloseIcon />
-              </IconButton>
-              <Typography variant="h6" className={classes.title}>
-                New Book Request
-              </Typography>
-              <Button autoFocus color="inherit" onClick={handleClose}>
-                Close
-              </Button>
-            </Toolbar>
-          </AppBar>
-          <form className={classes.form} noValidate autoComplete="off">
-            <Grid container spacing={3}>
-              <Grid item md={8}>
-                <TextField
-                  className={classes.field}
-                  id="outlined-basic"
-                  value={isbn}
-                  onChange={evt => setISBN(evt.target.value)}
-                  label="ISBN"
-                  type="number"
-                  variant="outlined"
-                  fullWidth
-                />
-              </Grid>
-              <Grid item md={4}>
-                <Button
-                  className={classes.field}
-                  color="secondary"
-                  variant="contained"
-                  onClick={searchBook}
-                >
-                  Search
-                </Button>
-              </Grid>
+  return (
+    <div>
+      <Button
+        variant="outlined"
+        startIcon={<AddBoxIcon></AddBoxIcon>}
+        onClick={handleClickOpen}
+      >
+        Start Vote
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+        maxWidth="md"
+      >
+        <DialogTitle onClose={handleClose}>
+          <Typography>Add book for voting...</Typography>
+          <IconButton
+            aria-label="close"
+            className={classes.closeButton}
+            onClick={handleClose}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+        <form className={classes.form} noValidate autoComplete="off">
+          <Grid container spacing={3}>
+            <Grid item md={8}>
+              <TextField
+                className={classes.field}
+                id="outlined-basic"
+                value={isbn}
+                onChange={evt => setISBN(evt.target.value)}
+                label="ISBN"
+                type="number"
+                variant="outlined"
+                fullWidth
+              />
             </Grid>
-          </form>
-          <Divider></Divider>
-          <DialogContent dividers>
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>{book.volumeInfo.title}</TableCell>
-                  <TableCell align="center" rowSpan={6}>
-                    <img src={book.volumeInfo.imageLinks.thumbnail}></img>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Author</TableCell>
-                  <TableCell>{book.volumeInfo.authors.join(", ")}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Publisher</TableCell>
-                  <TableCell>{book.volumeInfo.publisher}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Edition</TableCell>
-                  <TableCell>{book.volumeInfo.edition}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Type</TableCell>
-                  <TableCell>{book.volumeInfo.type}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>ISBN</TableCell>
-                  <TableCell>
-                    {book.volumeInfo.industryIdentifiers[0].identifier +
-                      ", " +
-                      book.volumeInfo.industryIdentifiers[1].identifier}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-            <Typography className={classes.modalDescription} variant="h5">
-              Description
-            </Typography>
-            <Typography variant="subtitle2">
-              {book.volumeInfo.description}
-            </Typography>
-          </DialogContent>
-        </Dialog>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <Button
-          variant="contained"
-          color="secondary"
-          startIcon={<AddBoxIcon></AddBoxIcon>}
-          onClick={handleClickOpen}
-        >
-          New Request
-        </Button>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          TransitionComponent={Transition}
-          maxWidth="md"
-        >
-          <AppBar className={classes.appBar}>
-            <Toolbar>
-              <IconButton
-                edge="start"
-                color="inherit"
-                onClick={handleClose}
-                aria-label="close"
+            <Grid item md={4}>
+              <Button
+                className={classes.field}
+                variant="outlined"
+                onClick={searchBook}
               >
-                <CloseIcon />
-              </IconButton>
-              <Typography variant="h6" className={classes.title}>
-                New Book Voting
-              </Typography>
-              <Button autoFocus color="inherit" onClick={handleClose}>
-                Close
+                Search
               </Button>
-            </Toolbar>
-          </AppBar>
-          <form className={classes.form} noValidate autoComplete="off">
-            <Grid container spacing={3}>
-              <Grid item md={8}>
-                <TextField
-                  className={classes.field}
-                  id="outlined-basic"
-                  value={isbn}
-                  onChange={evt => setISBN(evt.target.value)}
-                  label="ISBN"
-                  type="number"
-                  variant="outlined"
-                  fullWidth
-                />
-              </Grid>
-              <Grid item md={4}>
-                <Button
-                  className={classes.field}
-                  color="secondary"
-                  variant="contained"
-                  onClick={searchBook}
-                >
-                  Search
-                </Button>
-              </Grid>
             </Grid>
-          </form>
-        </Dialog>
-      </div>
-    );
-  }
+          </Grid>
+        </form>
+        {loaded && (
+          <>
+            <Divider></Divider>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell>{book.volumeInfo.title}</TableCell>
+                    <TableCell align="center" rowSpan={6}>
+                      <img src={book.volumeInfo.imageLinks.thumbnail}></img>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Author</TableCell>
+                    <TableCell>{book.volumeInfo.authors.join(", ")}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Publisher</TableCell>
+                    <TableCell>{book.volumeInfo.publisher}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Edition</TableCell>
+                    <TableCell>{book.volumeInfo.edition}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Type</TableCell>
+                    <TableCell>{book.volumeInfo.type}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>ISBN</TableCell>
+                    <TableCell>
+                      {book.volumeInfo.industryIdentifiers[0].identifier +
+                        ", " +
+                        book.volumeInfo.industryIdentifiers[1].identifier}
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+              <Typography className={classes.modalDescription} variant="h5">
+                Description
+              </Typography>
+              <Typography variant="subtitle2">
+                {book.volumeInfo.description}
+              </Typography>
+          </>
+        )}
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
 }
