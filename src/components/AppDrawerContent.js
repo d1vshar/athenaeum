@@ -10,16 +10,11 @@ import {
 import SearchIcon from "@material-ui/icons/Search";
 import BallotIcon from "@material-ui/icons/Ballot";
 
-const classes = {
-  sideBarTitle: {
-    padding: "16px"
-  }
-};
 class AppDrawer extends React.Component {
   render() {
     return (
       <>
-        <Typography variant="h6" style={classes.sideBarTitle}>
+        <Typography variant="h6" className="sideBarTitle">
           athenaeum
         </Typography>
         <Divider />

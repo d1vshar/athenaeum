@@ -3,13 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import DefaultAppBar from "./DefaultAppBar";
 import BookCard from "./BookCard";
 import { Container } from "@material-ui/core";
-const axios = require("axios").default;
 
-const classes = {
-  root: {
-    flexGrow: 1
-  }
-};
+const axios = require("axios").default;
 
 class RootPage extends React.Component {
   constructor() {
@@ -34,7 +29,7 @@ class RootPage extends React.Component {
     const { isLoaded, data } = this.state;
     if (!isLoaded) {
       return (
-      <div className={classes.root}>
+      <div className="appRoot">
         <DefaultAppBar />
         <Container fixed></Container>
         
@@ -43,7 +38,7 @@ class RootPage extends React.Component {
     } else {
       console.log("loaded");
       return (
-        <div className={classes.root}>
+        <div className="appRoot">
           <DefaultAppBar />
           <Container fixed>
             <Grid container spacing={1}>

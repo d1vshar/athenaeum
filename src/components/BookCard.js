@@ -16,36 +16,6 @@ import {
   TableRow,
 } from "@material-ui/core";
 
-const classes = {
-  card: {
-    margin: "10px",
-    display: "flex",
-    height: "150px",
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-    marginRight: "auto"
-  },
-  content: {
-    flex: "1 0 auto"
-  },
-  cover: {
-    marginLeft: "auto",
-    maxWidth: "100px",
-    objectFit: "fill"
-  },
-  modalDescription: {
-    padding: "10px 0px 10px 0px"
-  },
-  closeButton: {
-    position: 'absolute',
-    right: '5px',
-    top: '5px',
-    color: 'grey',
-  }
-};
-
 class BookCard extends React.Component {
   constructor(props) {
     super(props);
@@ -67,10 +37,10 @@ class BookCard extends React.Component {
     const { open } = this.state;
     return (
       <>
-        <Card style={classes.card}>
+        <Card className="bookCard">
           <CardActionArea onClick={this.handleOpen}>
-            <div style={classes.details}>
-              <CardContent style={classes.content}>
+            <div className="bookCardDetails">
+              <CardContent className="bookCardContent">
                 <Typography component="h5" variant="h5">
                   {this.props.book.name}
                 </Typography>
@@ -81,7 +51,7 @@ class BookCard extends React.Component {
             </div>
           </CardActionArea>
           <CardMedia
-            style={classes.cover}
+            className="cardCover"
             image={this.props.book.imgUrl}
             component="img"
           />
@@ -96,7 +66,7 @@ class BookCard extends React.Component {
             <Typography>{this.props.book.name}</Typography>
             <IconButton
               aria-label="close"
-              style={classes.closeButton}
+              className="closeButton"
               onClick={this.handleClose}
             >
               <CloseIcon />
@@ -136,7 +106,7 @@ class BookCard extends React.Component {
                 </TableRow>
               </TableBody>
             </Table>
-            <Typography style={classes.modalDescription} variant="h5">
+            <Typography className="modalDescription" variant="h5">
               Description
             </Typography>
             <Typography variant="subtitle2">

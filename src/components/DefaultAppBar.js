@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -9,35 +8,15 @@ import { SwipeableDrawer } from "@material-ui/core";
 import AppDrawerContent from "./AppDrawerContent";
 import NewBookModal from "./NewBookModal";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  sideBarTitle: {
-    padding: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  },
-  list: {
-    width: 250
-  },
-  fullList: {
-    width: "auto"
+class DefaultAppBar extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      open: false,
+    };
   }
-}));
 
-export default function DefaulAppBar() {
-  const classes = useStyles();
-
-  const [state, setState] = React.useState({
-    open: false
-  });
-
-  const toggleDrawer = status => event => {
+  toggleDrawer = (status) => (event) => {
     if (
       event &&
       event.type === "keydown" &&
@@ -46,46 +25,51 @@ export default function DefaulAppBar() {
       return;
     }
 
-    setState({ open: status });
+    this.setState({ open: status });
   };
 
-  const sideList = () => (
+  sideList = () => (
     <div
-      className={classes.list}
+      className="sideBarlist"
       role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onClick={this.toggleDrawer(false)}
+      onKeyDown={this.toggleDrawer(false)}
     >
       <AppDrawerContent></AppDrawerContent>
     </div>
   );
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="sticky">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            athenaeum
-          </Typography>
-          <NewBookModal></NewBookModal>
-        </Toolbar>
-      </AppBar>
-      <SwipeableDrawer
-        open={state.open}
-        onOpen={toggleDrawer(true)}
-        onClose={toggleDrawer(false)}
-      >
-        {sideList()}
-      </SwipeableDrawer>
-    </div>
-  );
+  render() {
+    const { open } = this.state;
+    return (
+      <div className="appBarRoot">
+        <AppBar position="sticky">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className="menuButton"
+              color="inherit"
+              aria-label="menu"
+              onClick={this.toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" className="appBarTitle">
+              athenaeum
+            </Typography>
+            <NewBookModal></NewBookModal>
+          </Toolbar>
+        </AppBar>
+        <SwipeableDrawer
+          open={open}
+          onOpen={this.toggleDrawer(true)}
+          onClose={this.toggleDrawer(false)}
+        >
+          {this.sideList()}
+        </SwipeableDrawer>
+      </div>
+    );
+  }
 }
+
+export default DefaultAppBar;

@@ -5,7 +5,7 @@ import RootPage from './components/RootPage';
 import * as serviceWorker from './serviceWorker';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import "./App.css"
+import "../App.css"
 
 const darkTheme = createMuiTheme({
     palette: {
