@@ -5,10 +5,10 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import { SwipeableDrawer } from "@material-ui/core";
-import AppDrawerContent from "./AppDrawerContent";
-import NewBookModal from "./NewBookModal";
+import AppDrawer from "./AppDrawer";
+import NewVoteModal from "./NewVoteModal";
 
-class DefaultAppBar extends React.Component {
+class DarkAppBar extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -35,7 +35,7 @@ class DefaultAppBar extends React.Component {
       onClick={this.toggleDrawer(false)}
       onKeyDown={this.toggleDrawer(false)}
     >
-      <AppDrawerContent></AppDrawerContent>
+      <AppDrawer></AppDrawer>
     </div>
   );
 
@@ -57,7 +57,7 @@ class DefaultAppBar extends React.Component {
             <Typography variant="h6" className="appBarTitle">
               athenaeum
             </Typography>
-            <NewBookModal></NewBookModal>
+            <NewVoteModal></NewVoteModal>
           </Toolbar>
         </AppBar>
         <SwipeableDrawer
@@ -72,4 +72,4 @@ class DefaultAppBar extends React.Component {
   }
 }
 
-export default DefaultAppBar;
+export default DarkAppBar;

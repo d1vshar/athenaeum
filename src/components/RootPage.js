@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import DefaultAppBar from "./DefaultAppBar";
+import DarkAppBar from "./DarkAppBar";
 import BookCard from "./BookCard";
 import { Container } from "@material-ui/core";
 
@@ -30,7 +30,7 @@ class RootPage extends React.Component {
     if (!isLoaded) {
       return (
       <div className="appRoot">
-        <DefaultAppBar />
+        <DarkAppBar />
         <Container fixed></Container>
         
       </div>
@@ -39,7 +39,7 @@ class RootPage extends React.Component {
       console.log("loaded");
       return (
         <div className="appRoot">
-          <DefaultAppBar />
+          <DarkAppBar  />
           <Container fixed>
             <Grid container spacing={1}>
               {data.map(function(book) {

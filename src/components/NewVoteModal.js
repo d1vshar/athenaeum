@@ -24,7 +24,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-class NewBookModal extends React.Component {
+class NewVoteModal extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -171,4 +171,4 @@ class NewBookModal extends React.Component {
   }
 }
 
-export default NewBookModal;
+export default NewVoteModal;
